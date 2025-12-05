@@ -22,7 +22,7 @@ jobs:
       # Check out the code from the repository.
       - uses: actions/checkout@v3
       # Set up a Node.js environment using the specified node version.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -34,6 +34,10 @@ jobs:
 
       # Run the linter.
       - run: cd backend && npm run lint
+
+      - name: Fix permissions
+      - run: chmod +x backend/node_modules/.bin/mocha
+
 
       # Send a console message at completion.
       - run: |
