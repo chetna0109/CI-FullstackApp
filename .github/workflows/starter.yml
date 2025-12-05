@@ -30,14 +30,10 @@ jobs:
       - run: cd backend && npm install
 
       # Run the tests.
-      - run: cd backend && npm test
+      - run: cd backend && npx mocha test.js
 
       # Run the linter.
       - run: cd backend && npm run lint
-
-      - name: Fix permissions
-        run: chmod +x backend/node_modules/.bin/mocha
-
 
       # Send a console message at completion.
       - run: |
